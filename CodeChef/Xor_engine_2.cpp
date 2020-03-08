@@ -66,15 +66,14 @@ int main()
         X[j].getdata(N,Q);
 
         d.push_back(X[j].calculate_data());
-
-        for(int i=0;i<d.size();i++)
+    }
+    
+    for(int i=0;i<d.size();i++)
         {
             cout<<"the values are: ";
             for(int k=0;k<d[i].size();k++)
             cout<<" "<<d[i][k];
             cout<<endl;
         }
-    }
-
     return 0;
 }
