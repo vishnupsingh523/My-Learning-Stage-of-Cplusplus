@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-
+    name: building
     runs-on: ubuntu-latest
 
     steps:
