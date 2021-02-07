@@ -15,32 +15,19 @@ using namespace std;
 #define sync ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 
 int main() {
-
     sync
-
     // #ifndef ONLINE_JUDGE
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
     // #endif
-
-    int t;
-    ll n;
-    cin>>t;// testcases
-    while(t--)
-    {
-        ll sum = 0;
-        ll x;
-        cin>>n;
-        while(n--){
-            cin>>x;
-            sum = sum + x;
+    
+    int n;
+    cin>>n;
+    for(int i=10;i>0;i--){
+        if(n%i==0)
+        {
+            cout<<i;
+            break;
         }
-        if(sum%2==0)
-        cout<<"1\n";
-        else 
-        cout<<"2\n";
-        
     }
-    
-    
 }
