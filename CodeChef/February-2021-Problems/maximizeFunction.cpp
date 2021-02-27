@@ -57,5 +57,7 @@ int main() {
             }
         }
         cout<<maximum<<endl;
+
+        // ans = 2*(max(a)-min(a)); cout<<ans;
     }
 }
