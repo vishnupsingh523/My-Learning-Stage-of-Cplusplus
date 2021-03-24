@@ -14,29 +14,28 @@ using namespace std;
  
 #define sync ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 
+
 int main() {
     // #ifndef ONLINE_JUDGE
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
     // #endif
-    
-    int t;
-    cin>>t;
-    for(int j=1;j<=t;j++)
+
+    int a, b;
+    cin>>a>>b;
+    int candles=0;
+
+    for(;a!=0;)
     {
-        ll n, k;
-        cin>>n>>k;
-
-        st s;
-        cin>>s;
-
-        ll goodScore=0;
-        for(int i=0;i<n/2;i++)
+        if(a>=b)
         {
-            if(s[i] != s[n-i-1])
-            goodScore++;
+            candles+= b;
+            a = a-b;
+            a = a+1;
         }
-
-        cout<<"Case #"<<j<<": "<<abs(k-goodScore)<<"\n";
+        else
+        a--,candles++;
     }
+
+    cout<<candles;
 }
