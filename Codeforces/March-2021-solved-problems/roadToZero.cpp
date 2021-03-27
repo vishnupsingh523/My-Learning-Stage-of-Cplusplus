@@ -11,30 +11,28 @@ int main(){
         cin>>x>>y;
         cin>>a>>b;
         
-        long long cost1, cost2, cost3, c=x,d=y;
+        long long cost1=LONG_LONG_MAX, cost2=LONG_LONG_MAX,cost3=LONG_LONG_MAX,cost4=LONG_LONG_MAX;
         
-        //checking for cost 1
-        if(c>d)
-        {
-            cost1 = (c-d)*a;
-            c = d;
-        }
+        if(x>=0&&y>=0)
+        cost1 = (x>y)? (x-y)*a+y*b : (y-x)*a+x*b;
+        if(x<=0&&y<=0)
+        cost2 = (x>y)?(x-y)*a + (-x)*b: (y-x)*a+(-y)*b;
+
+        if(x<=0&&y>=0)
+        cost3 = (y-x)*a;
+
+        if(x>=0 && y<=0)
+        cost4 = (x-y)*a;
         
-        if(c<d){
-            cost1 = (d-c)*a;
-            d = c;
-        }
-
-        if(c == d){
-            cost1 += c*b;
-        }
-
-        // cost 2;
-        cost2 = (abs(x)+abs(y))*a;
-        // cost2 = (abs(x)+abs(y))*a;
-        if(cost1>cost2)
-        cout<<cost2<<"\n";
-        else
+        if(cost1<=cost2&&cost1<=cost3&&cost1<=cost4)
         cout<<cost1<<"\n";
+        else 
+        if(cost2<=cost1&&cost2<=cost3&&cost2<=cost4)
+        cout<<cost2<<"\n";
+        else 
+        if(cost3<=cost2&&cost1>=cost3&&cost3<=cost4)
+        cout<<cost3<<"\n";
+        else
+        cout<<cost4<<"\n";
     }
 }
