@@ -29,20 +29,16 @@ int main() {
     // freopen("output.txt", "w", stdout);
     // #endif
 
-    int t;
-    cin>>t;
-    const int arr[4] = {60, 20, 40, 51};
-    int n;
-    while(t--)
+    ll n;
+    cin>>n;
+    if(n<0)
     {
-        cin>>n;
-        int div=n/4, mod=n%4;
-        ll value =0;
-        if(n>4)
-        value = 60*div + arr[mod] - ( 6*(div-1) + 6*mod );
-        else
-        value = arr[mod];
-
-        cout<<value<<"\n";
+        ll one = n/10;
+        ll two = (n/100)*10 + n%10;
+        if(one>two)
+        cout<<one;
+        else cout<<two;
     }
+    else
+    cout<<n;
 }

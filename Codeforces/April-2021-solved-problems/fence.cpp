@@ -29,20 +29,36 @@ int main() {
     // freopen("output.txt", "w", stdout);
     // #endif
 
-    int t;
-    cin>>t;
-    const int arr[4] = {60, 20, 40, 51};
-    int n;
-    while(t--)
-    {
-        cin>>n;
-        int div=n/4, mod=n%4;
-        ll value =0;
-        if(n>4)
-        value = 60*div + arr[mod] - ( 6*(div-1) + 6*mod );
-        else
-        value = arr[mod];
+    int n, k;
+    cin>>n>>k;
 
-        cout<<value<<"\n";
+    int arr[n];
+    
+    int minimum = INT_MAX;
+    int index;
+    int sum =0;
+    // int value =0;
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+
+        if(i<k)
+        sum += arr[i];
+        
+        if(i == k-1)
+        {           
+            if(minimum >= sum)
+            minimum = sum, index = i-k+1;
+            // cout<<sum<<"\n";
+        }
+        else if (i > k-1)
+        {
+            sum = sum - arr[i-k] + arr[i];
+            if(minimum >= sum)
+            minimum = sum, index = i-k+1;
+            // cout<<sum<<"\n";
+        }
     }
+
+    cout<<index+1;
 }

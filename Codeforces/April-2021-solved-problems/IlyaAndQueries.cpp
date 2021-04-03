@@ -29,20 +29,27 @@ int main() {
     // freopen("output.txt", "w", stdout);
     // #endif
 
-    int t;
-    cin>>t;
-    const int arr[4] = {60, 20, 40, 51};
-    int n;
-    while(t--)
-    {
-        cin>>n;
-        int div=n/4, mod=n%4;
-        ll value =0;
-        if(n>4)
-        value = 60*div + arr[mod] - ( 6*(div-1) + 6*mod );
-        else
-        value = arr[mod];
+    string str;
+    cin>>str;
 
-        cout<<value<<"\n";
+    int arr[str.size()];
+    arr[0] = 0;
+    for(int i=1;i<str.size();i++)
+    {
+        arr[i] = 0;
+        if(str[i-1] == str[i])
+        arr[i] = arr[i-1]+ 1;
+        else
+        arr[i] = arr[i-1];
+    }
+
+    int m;
+    cin>>m;
+    
+    int l, r;
+    while(m--)
+    {
+        cin>>l>>r;
+        cout<<arr[r-1]-arr[l-1]<<"\n";
     }
 }
