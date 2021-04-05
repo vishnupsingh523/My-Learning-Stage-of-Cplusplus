@@ -31,20 +31,30 @@ int main() {
 
     ll t;
     cin>>t;
-    const int arr[4] = {60, 20, 36, 51};
-    ll n;
+    string str1, str2, rev1, rev2;
+
     while(t--)
     {
-        cin>>n;
-        ll div=n/4, mod=n%4;
-        ll value =0;
-        if(n>4&&mod==0)
-        value = 60*div - ( 6*(div-1) + 6*mod );
-        else if(n>4&&mod != 0)
-        value = 60*div + arr[mod] - ( 6*(div-1) + 6*mod );
-        else
-        value = arr[mod];
+        string str;
+        cin>>str;
 
-        cout<<value<<"\n";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        str1 = 'a' + str;
+        rev1 = str1;
+        reverse(rev1.begin(), rev1.end());
+
+        str2 = str + 'a'; 
+        rev2 = str2;
+        reverse(rev2.begin(), rev2.end());
+
+        if(rev1==str1 && str2 == rev2)
+        cout<<"NO\n";
+        else if(rev1==str1 && str2 != rev2)
+        cout<<"YES\n"<<str2<<"\n";
+        else if(rev1 != str1 && str2 == rev2)
+        cout<<"YES\n"<<str1<<"\n";
+        else{
+        cout<<"YES\n"<<str1<<"\n";
+        }
     }
 }

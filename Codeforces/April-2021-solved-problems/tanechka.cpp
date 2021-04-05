@@ -29,22 +29,14 @@ int main() {
     // freopen("output.txt", "w", stdout);
     // #endif
 
-    ll t;
-    cin>>t;
-    const int arr[4] = {60, 20, 36, 51};
-    ll n;
-    while(t--)
-    {
-        cin>>n;
-        ll div=n/4, mod=n%4;
-        ll value =0;
-        if(n>4&&mod==0)
-        value = 60*div - ( 6*(div-1) + 6*mod );
-        else if(n>4&&mod != 0)
-        value = 60*div + arr[mod] - ( 6*(div-1) + 6*mod );
-        else
-        value = arr[mod];
+    ll n,k;
+    cin>>n>>k;
 
-        cout<<value<<"\n";
+    if(k<=n)
+    cout<<k/2;
+    else
+    {
+        cout<<max(0ll, (k+1)/2);
     }
+    
 }
