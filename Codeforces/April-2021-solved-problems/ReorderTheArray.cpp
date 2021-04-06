@@ -22,6 +22,30 @@ int findGCD(ll n)
 
     return __gcd(n, sum);
 }
+
+ll count=0;
+ll permute(ll * a, int l, int r)
+{
+    if (a[l]>=a[r] || a[r]>=a[l])
+        return ::count++;
+    else
+    {
+        // Permutations made
+        for (int i = l; i <= r; i++)
+        {
+ 
+            // Swapping done
+            swap(a[l], a[i]);
+ 
+            // Recursion called
+            permute(a, l+1, r);
+ 
+            //backtrack
+            swap(a[l], a[i]);
+        }
+    }
+}
+
 int main() {
     sync
     // #ifndef ONLINE_JUDGE
@@ -30,10 +54,8 @@ int main() {
     // #endif
 
     ll n,k;
-    cin>>n>>k;
-
-    ll ans = min(n, k-1) -k/2;
-    ans = max(ans , 0ll);
-    cout<<ans;
+    cin>>n;
+    
+    k = permute();
     
 }
