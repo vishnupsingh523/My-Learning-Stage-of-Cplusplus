@@ -6,6 +6,11 @@ int main(){
 
     long long n;
     cin>>n;
-    long long digit = pow(8,n);
-    cout<<digit%10;
+    long long digit = 8;
+    for(long long i =1;i<=n;i++)
+    {
+        digit = pow(digit,i);
+        digit = digit %10;
+    }
+    cout<<digit;
 }

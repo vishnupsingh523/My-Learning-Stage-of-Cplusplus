@@ -31,19 +31,26 @@ int main() {
 
     ll t;
     cin>>t;
-    const int arr[4] = {60, 20, 36, 51};
+    const int arr[4] = {60, 20, 40, 51};
     ll n;
     while(t--)
     {
         cin>>n;
         ll div=n/4, mod=n%4;
         ll value =0;
-        if(n>4&&mod==0)
-        value = 60*div - ( 6*(div-1) + 6*mod );
-        else if(n>4&&mod != 0)
-        value = 60*div + arr[mod] - ( 6*(div-1) + 6*mod );
-        else
-        value = arr[mod];
+
+        if(n==1)
+        value = arr[n];
+        else if(n == 2)
+        value = arr[n];
+        else if(n == 3)
+        value = arr[n];
+        else if(n==4)
+        value = arr[0];
+        else if(n>4 && mod == 0)
+        value = 60*div - ( 4*4*(div-1) + 4*mod );
+        else if(n>4)
+        value = 60*div + arr[mod] - ( 4*4*(div-1) + 4*mod );
 
         cout<<value<<"\n";
     }

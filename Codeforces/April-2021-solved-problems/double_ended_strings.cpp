@@ -20,50 +20,18 @@ int main(){
             int max1 =INT_MIN;
 
 
-            for(int k =0;k<str1.size();k++)
+            for(int k =1;k<=min(str1.size(), str2.size());k++)
             {
-                count=0;
-                for(int i=k, j=0;i<str1.size()&&j<str2.size();i++,j++)
-                {
-                        if(str1[i]==str2[j])
-                        count++;
-                        else{
-                            if(max1<count)
-                            max1 = count;
-                            count =0;
-                        }
+                for(int i=0;i+k<=str1.size(); i++){
+                    for(int j=0;j+k<=str2.size(); j++)
+                    {
+                        if(str1.substr(i, k) == str2.substr(j, k))
+                        max1 = max(max1, k);
+                    }
                 }
-                
-                if(max1<count)
-                max1 = count;
-                // cout<<" "<<max<<"\n";
             }
 
-            int max2 = INT_MIN;
-            for(int k =0;k<str2.size();k++)
-            {
-                count=0;
-                for(int i=k, j=0;i<str1.size()&&j<str2.size();i++,j++)
-                {
-                        if(str1[j]==str2[i])
-                        count++;
-                        else{
-                            if(max2<count)
-                            max2 = count;
-                            count =0;
-                        }
-                }
-                
-                if(max2<count)
-                max2 = count;
-                // cout<<" "<<max<<"\n";
-            }
-
-            
-            if(str1.size()>str2.size())
-            cout<<str1.size()-max(max1,max2)+str2.size()-max(max1,max2)<<"\n";
-            else
-            cout<<str2.size()-max(max1,max2)+str1.size()-max(max1,max2)<<"\n";
+            cout<<str1.size()+str2.size()-2*max1<<"\n";
         }
     }
 }
