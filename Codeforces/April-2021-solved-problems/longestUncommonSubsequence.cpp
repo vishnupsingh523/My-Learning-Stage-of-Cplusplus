@@ -13,7 +13,7 @@ int main(){
         {
             for(int j=0;j<b.size();j++)
             {
-                if(a[k]==b[j])
+                
             }
         }
     }
