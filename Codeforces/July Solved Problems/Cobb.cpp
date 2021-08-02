@@ -17,11 +17,14 @@ int main()
         long long maxValue = 0;  
         long long maxm = LONG_LONG_MIN;
 
-        for(int i=1;i<n;i++)
+        for(int i=0;i<n;i++)
         {
-            maxValue = (i*(i+1)) - k*(arr[i-1]|arr[i]);
-            if(maxm<maxValue)
-            maxm = maxValue;
+            for(int j=i+1;j<n;j++)
+            {
+                maxValue = (i*(j)) - k*(arr[i]|arr[j]);
+                if(maxm<maxValue)
+                maxm = maxValue;
+            }
         }
         cout<<maxm<<"\n";
     }
