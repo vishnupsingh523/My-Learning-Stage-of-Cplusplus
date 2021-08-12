@@ -12,18 +12,14 @@ int main()
 
         long long days =0, i,j;
 
-        for( i=0;i<k;i++)
-        {
-            for( j=i;j<n;j=j+k)
-            if(j==p)
-            {
-                days++;
-                break;
-            }else days++;
+        // for( i=0;i<=p%k;i++)
+        // {
+            
+        //     days = (p%k)*(n/k) + (p/k)+1;
+        // }
+        for(i=0;i<=p%k;i++)
+        days = days + (n/(k+i));
 
-            if(j==p)
-            break;
-        }
 
         cout<<days<<"\n";
     }
