@@ -11,16 +11,13 @@ int main()
         cin>>n>>p>>k;
 
         long long days =0;
-        long long total = (n/k)*k;
         long long rem = p%k;
-        if(n>total)
+        if(rem <= (n%k))
         {
-            days = (rem-1)*(n/k) + (n/k + 1) + (n-total)%rem;
-            for(int i=rem;i<=p;i=i+k)
-            days++;
+            days = (rem)*(n/k + 1) + (p/k)*(n/k);
         }
         else
-        days = (p%k)*(n/k) + (p+k)/k;
+        days = (n%k)*(n/k +1) + (rem - (n%k))*(n/k) + (p/k)*(n/k);
 
         cout<<days<<"\n";
     }
