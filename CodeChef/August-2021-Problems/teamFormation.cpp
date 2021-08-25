@@ -37,6 +37,22 @@ int main()
 
         int ans =0;
         
+       if(first >= second)
+        {
+            ans = second;
+            first = first - second;
+        }
+        else{
+            ans = first;
+            second = second - first;
+        }
+
+        ans += min(both, first + second + none);
+        both = both - min(both, first + second + none);
+
+        ans += both/2;
+
+        cout<<ans<<endl;
     }
     
 }
