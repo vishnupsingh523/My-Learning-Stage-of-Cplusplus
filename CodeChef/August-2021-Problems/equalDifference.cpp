@@ -7,6 +7,7 @@ using namespace std;
 
 #define w(t) int t;cin>>t;while(t--)
 #define f(n) for(int i=0;i<n;i++)
+#define endl "\n"
 
 #define sync ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 
@@ -18,23 +19,22 @@ int main()
         int n;
         cin>>n;
         ll value;
-        map<ll,ll> mp;
+        unordered_map<ll, ll> mp;
+        ll maxm = 0;
 
-        f(n)
-        {
-            cin>>value;
-            if(mp.find(value) != mp.end())
-            mp[value]++;
-            else
+            f(n)
             {
-                mp[value] = 0;
+                cin>>value;
                 mp[value]++;
+
+                if(mp[value] > maxm)
+                maxm = mp[value];
             }
+            
+        if(n<=2)
+        cout<<0<<endl;
+        else{
+            cout<<n-maxm<<endl;
         }
-        
-        auto itr = mp.begin();
-        for(;itr!=mp.end(); itr++)
-        cout<<itr->first<<" "<<itr->second<<endl;
-        cout<<endl;
     }
 }
