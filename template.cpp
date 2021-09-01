@@ -11,6 +11,7 @@ using namespace std;
 #define st string
 
 #define w(x) int x;cin>>x;while(x--)
+#define endl "\n"
  
 #define sync ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 

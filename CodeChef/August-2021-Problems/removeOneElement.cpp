@@ -31,45 +31,23 @@ int main()
 
         // ll diff;
 
-        if(n==2)
-        {
-            if(b[0]-a[1]>0)
-            cout<<min(b[0]-a[0], b[0]-a[1])<<endl;
-            else
-            cout<<b[0]-a[0]<<endl;
-        }
-        else if(n==3)
-        {
-            unordered_map<ll, ll> ump;
-    
-            ump[b[0]-a[0]]++;
-            ump[b[0]-a[1]]++;
-            ump[b[0]-a[2]]++;
-            ump[b[1]-a[0]]++;
-            ump[b[1]-a[1]]++;
-            ump[b[1]-a[2]]++;
-
-            ll value = ump.begin()->second;
-            ll minm = ump.begin()->first;
-
-            for(auto itr = ump.begin(); itr != ump.end(); itr++)
-            {
-                if(value < itr->second)
-                {
-                    value = itr->second;
-                    minm = itr->first;
-                }
-            
-            }
-            cout<<minm<<endl;
-        }
-        // else
+        // if(n==2)
+        // {
+        //     if(b[0]-a[1]>0)
+        //     cout<<min(b[0]-a[0], b[0]-a[1])<<endl;
+        //     else
+        //     cout<<b[0]-a[0]<<endl;
+        // }
+        // else if(n==3)
         // {
         //     unordered_map<ll, ll> ump;
-        //     for(int i=0;i<3;i++)
-        //     ump[b[i]-a[i]]++;
-        //     for(int i=n-1;i>n-4;i--)
-        //     ump[b[i-1] - a[i]]++;
+    
+        //     ump[b[0]-a[0]]++;
+        //     ump[b[0]-a[1]]++;
+        //     ump[b[0]-a[2]]++;
+        //     ump[b[1]-a[0]]++;
+        //     ump[b[1]-a[1]]++;
+        //     ump[b[1]-a[2]]++;
 
         //     ll value = ump.begin()->second;
         //     ll minm = ump.begin()->first;
@@ -85,25 +63,29 @@ int main()
         //     }
         //     cout<<minm<<endl;
         // }
-
-        else{
-            ll sum1 =0, sum2=0;
+        // else
+        // {
+            unordered_map<ll, ll> ump;
             for(int i=0;i<n;i++)
-            sum1+= a[i];
-            for(int i=0;i<n-1;i++)
-            sum2+=b[i];
+            ump[b[i]-a[i]]++;
 
-            ll sum =sum2-sum1;
-            ll minm = LONG_LONG_MAX;
-            for(int i=0;i<n;i++)
+            for(int i=1;i<n;i++)
+            ump[b[i-1]-a[i]]++;
+
+            ll value = ump.begin()->second;
+            ll minm = ump.begin()->first;
+
+            for(auto itr = ump.begin(); itr != ump.end(); itr++)
             {
-                ll x = (sum+a[i])/(n-1) ;
-                if( (sum +a[i]) == (n-1)*x)
-                if( (sum1+(n-1)*x) == (sum2 + a[i]))
-                minm = min(minm, x);
+                if(value < itr->second)
+                {
+                    value = itr->second;
+                    minm = itr->first;
+                }
+            
             }
-
             cout<<minm<<endl;
-        }
+        // }
+
     }
 }

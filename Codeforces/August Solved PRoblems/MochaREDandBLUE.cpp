@@ -37,8 +37,8 @@ int main()
         }
         else{
             
-            for(int i=1;i<n-1;i++)
-            if(str[i-1]=='?'&&str[i]=='?')
+            // for(int i=1;i<n-1;i++)
+            // if(str[i-1]=='?'&&str[i]=='?')
         }
     
     }
