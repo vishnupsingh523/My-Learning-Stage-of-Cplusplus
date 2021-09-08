@@ -15,6 +15,22 @@ using namespace std;
  
 #define sync ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 
+ll log(int base, ll x)
+{
+    return (ll)(log(x)/log(base));
+}
+
+ll log3(ll value)
+{
+    ll cnt =0;
+    while(value%3==0)
+    {
+        value = value/3;
+        cnt++;
+    }
+    return cnt;
+}
+
 int main() {
     sync
     // #ifndef ONLINE_JUDGE
@@ -22,32 +38,24 @@ int main() {
     // freopen("output.txt", "w", stdout);
     // #endif
     
-    ll n,k;
-    cin>>n>>k;
+    ll n;
+    cin>>n;
     
-    ll arr[n];
+    vector<pair<ll,ll>>arr;
+    
+    ll value;
     for(int i=0;i<n;i++)
-    cin>>arr[i];
-
-    sort(arr, arr+n);
-
-    // ll x = arr[k-1];
-    // bool check = false;
-    ll x =0;
-    if(k==0)
     {
-        x = arr[0]-1;
+        cin>>value;
+        ll cnt = log3(value);
+        arr.push_back({cnt,value});
     }
-    else
-    x=arr[k-1];
 
-    ll cnt=0;
     for(int i=0;i<n;i++)
-    if(arr[i]<=x)
-    cnt++;
+    cout<<arr[i].first<<" "<<arr[i].second<<endl;  
 
-    if(!(x>=1&&x<=1000*1000*1000) || cnt!=k)
-    cout<<-1;
-    else
-    cout<<x;
+    sort(arr.begin(),arr.end());  
+    cout<<endl<<"AfterSorting:\n";
+    for(int i=0;i<n;i++)
+    cout<<arr[i].first<<" "<<arr[i].second<<endl;  
 }

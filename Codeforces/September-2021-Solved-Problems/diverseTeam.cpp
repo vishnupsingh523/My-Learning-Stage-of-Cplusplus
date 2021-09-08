@@ -15,6 +15,11 @@ using namespace std;
  
 #define sync ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 
+ll log(int base, ll x)
+{
+    return (ll)(log(x)/log(base));
+}
+
 int main() {
     sync
     // #ifndef ONLINE_JUDGE
@@ -22,32 +27,40 @@ int main() {
     // freopen("output.txt", "w", stdout);
     // #endif
     
-    ll n,k;
+    int n,k;
     cin>>n>>k;
-    
-    ll arr[n];
+
+    int arr[n];
     for(int i=0;i<n;i++)
     cin>>arr[i];
 
-    sort(arr, arr+n);
-
-    // ll x = arr[k-1];
-    // bool check = false;
-    ll x =0;
-    if(k==0)
+    int ans[k];
+    int cnt=1;
+    ans[0]=0;
+    for(int i=1;i<n&&(cnt<=k);i++)
     {
-        x = arr[0]-1;
+        bool check = true;
+
+        for(int j=0;j<cnt;j++)
+        if(arr[i]==arr[ans[j]])
+        {
+            check = false;
+            break;
+        }
+
+        if(check)
+        {
+            ans[cnt]=i;
+            cnt++;
+        }
+    }
+
+    if(cnt==k)
+    {
+        cout<<"YES\n";
+        for(int i:ans)
+        cout<<i+1<<" ";
     }
     else
-    x=arr[k-1];
-
-    ll cnt=0;
-    for(int i=0;i<n;i++)
-    if(arr[i]<=x)
-    cnt++;
-
-    if(!(x>=1&&x<=1000*1000*1000) || cnt!=k)
-    cout<<-1;
-    else
-    cout<<x;
+    cout<<"NO";
 }
