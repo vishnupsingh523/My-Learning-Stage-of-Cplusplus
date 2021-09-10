@@ -29,36 +29,46 @@ int main() {
         ll n, x;
         cin>>n>>x;
         ll arr[n];
-
-        for(int i=0;i<n;i++)
-        cin>>arr[i];
-
-        ll maxEqual =1, minOperation = LONG_LONG_MAX;
+        int pos = 0, neg = 0;
 
         for(int i=0;i<n;i++)
         {
-            for(int j=i;j<n;j++)
-            {
-                unordered_map<ll,ll> ump;
-                ll count =0;
-                for(int k=0;k<i;k++)
-                ump[arr[k]]++;
-                for(int k=i;i<=j;k++)
-                {
-                    ump[arr[k]^k]++;
-                    count =k;
-                }
-                for(int k=j+1;k<n;k++)
-                ump[arr[k]]++;
-
-                for(auto it : ump)
-                if(maxEqual<it.second)
-                {
-                    maxEqual = it.second;
-                    minOperation = ++count;
-                }
-            }
+            cin>>arr[i];
+            if(arr[i]-x==1)
+            pos++;
+            else if(arr[i]-x ==-1)
+            neg++;
         }
-        cout<<maxEqual<<minOperation<<endl;
+
+        ll maxEqual =1, minOperation = LONG_LONG_MAX;
+
+        // for(int i=0;i<n;i++)
+        // {
+        //     for(int j=i;j<n;j++)
+        //     {
+        //         unordered_map<ll,ll> ump;
+        //         ll count =0;
+
+        //         for(int k=i;i<=j;k++)
+        //         {
+        //             ump[arr[k]^k]++;
+        //             count =k;
+        //         }
+
+        //         for(auto it : ump)
+        //         if(maxEqual<it.second)
+        //         {
+        //             maxEqual = it.second;
+        //             minOperation = count;
+        //         }
+        //     }
+        // }
+
+        if(pos==0&&neg==0)
+        cout<<1<<" "<<0<<endl;
+        else if(pos>neg)
+        cout<<pos+neg<<" "<<neg<<endl;
+        else
+        cout<<pos+neg<<" "<<pos<<endl;
     }
 }

@@ -57,13 +57,13 @@ int main() {
                     if(str[j]!='1'&&i!=j&&ch&&arr[i][j]=='='&&arr[j][i]=='=')
                     {
                         arr[i][j] = '+';
-                        arr[j][i] = '-';
+                        arr[j][i] = '+';
                         ch = false;
                         break;
                     }
                     else if(str[j]!='1'&&i!=j&&arr[i][j]=='='&&arr[j][i]=='=')
                     {
-                        arr[i][j] = '-';
+                        arr[i][j] = '+';
                         arr[j][i] = '+';
                         ch = true;
                         break;
@@ -76,8 +76,7 @@ int main() {
         for(int i=0;i<n;i++)
         if(str[i]=='2')
         cnt++;
-
-        if(cnt != 1 && cnt!=2)
+        if(cnt !=1)
         {
             cout<<"YES\n";
             for(int i=0;i<n;i++)
