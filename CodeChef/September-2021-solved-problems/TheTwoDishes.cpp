@@ -18,9 +18,22 @@ using namespace std;
 
 int main() {
     sync
-    #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif
+    // #ifndef ONLINE_JUDGE
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    // #endif
     
+    int t;
+    cin>>t;
+
+    while(t--)
+    {
+        ll n,s;
+        cin>>n>>s;
+
+        if(n>=s)
+        cout<<s<<endl;
+        else
+        cout<<n-(s-n)<<endl;
+    }
 }

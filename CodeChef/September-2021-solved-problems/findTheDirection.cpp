@@ -18,9 +18,26 @@ using namespace std;
 
 int main() {
     sync
-    #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif
+    // #ifndef ONLINE_JUDGE
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    // #endif
     
+    int t;
+    int x;
+    cin>>t;
+
+    while(t--)
+    {
+        cin>>x;
+        
+        if(x%4 == 3)
+        cout<<"West"<<endl;
+        else if(x%4 == 0)
+        cout<<"North\n";
+        else if(x%4 == 1)
+        cout<<"East\n";
+        else
+        cout<<"South\n";
+    }
 }

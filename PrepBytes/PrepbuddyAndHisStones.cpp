@@ -16,6 +16,7 @@ using namespace std;
  
 #define sync ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 
+
 int main() {
     sync
     // #ifndef ONLINE_JUDGE
@@ -23,32 +24,39 @@ int main() {
     // freopen("output.txt", "w", stdout);
     // #endif
     
-    int n,k;
-    cin>>n>>k;
-    
-    int arr[n];
-
-    fon(0,n)
-    cin>>arr[i];
-
-    unordered_map<int,int> ans;
-    fon(0,n)
+    w(t)
     {
-        if(ans.find(arr[i])==ans.end())
-        ans[arr[i]]=i;
-    }
+        ll n;
+        cin>>n;
+        int a[n],b[n];
 
-    if(ans.size()<k)
-    cout<<"NO\n";
-    else
-    {
-        int cnt =0;
-        cout<<"YES\n";
-        for(auto it = ans.begin();it!=ans.end()&&cnt<k; it++)
+        fon(0,n)
+        cin>>a[i];
+        fon(0,n)
+        cin>>b[i];
+
+        vector<int> ans;
+        fon(0,n)
         {
-            cnt++;
-            cout<<it->second+1<<" ";
+            int value = a[i]-b[i];
+            ans.push_back(value);
         }
-        cout<<endl;
+
+        sort(ans.begin(), ans.end());
+        
+        ll sum =0;
+        bool check = false;
+
+        fon(0,n)
+        if(ans[i]>=0)
+        {
+            check = true;
+            sum+= ans[i];
+        }
+        
+        if(check)
+        cout<<sum<<endl;
+        else
+        cout<<ans[n-1]<<endl;
     }
 }

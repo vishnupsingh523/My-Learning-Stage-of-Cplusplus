@@ -16,6 +16,30 @@ using namespace std;
  
 #define sync ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 
+ll obtainSum(ll n, ll s)
+{
+    ll sum =0;
+    bool check =true;
+    ll i;
+    for(i=1;i<=n&&check==true;i++)
+    {
+        if(n==i)
+        sum = (n*(n-1))/2;
+        else
+        sum = (i*(i-1))/2 + ( (n*(n+1))/2 - (i*(i+1))/2);
+        
+        if(sum == s)
+        {
+            check = false;
+            break;
+        }
+    }
+
+    if(check==true)
+    return -1;
+    else
+    return i;
+}
 int main() {
     sync
     // #ifndef ONLINE_JUDGE
@@ -23,32 +47,14 @@ int main() {
     // freopen("output.txt", "w", stdout);
     // #endif
     
-    int n,k;
-    cin>>n>>k;
-    
-    int arr[n];
+    int t;
+    cin>>t;
 
-    fon(0,n)
-    cin>>arr[i];
-
-    unordered_map<int,int> ans;
-    fon(0,n)
+    while(t--)
     {
-        if(ans.find(arr[i])==ans.end())
-        ans[arr[i]]=i;
-    }
+        ll n,s;
+        cin>>n>>s;
 
-    if(ans.size()<k)
-    cout<<"NO\n";
-    else
-    {
-        int cnt =0;
-        cout<<"YES\n";
-        for(auto it = ans.begin();it!=ans.end()&&cnt<k; it++)
-        {
-            cnt++;
-            cout<<it->second+1<<" ";
-        }
-        cout<<endl;
+        cout<<obtainSum(n,s)<<endl;
     }
 }
