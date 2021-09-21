@@ -28,45 +28,42 @@ int main() {
         ll n;
         cin>>n;
         ll a[n], b[n];
-        unordered_map<ll,ll> ump1, ump2;
 
         fon(0,n)
         {
             cin>>a[i];
-            ump1[a[i]]=i;
         }
         fon(0,n)
         {
             cin>>b[i];
-            ump2[b[i]] = i;
         }
 
         ll flag = 0;
         ll cnt =0;
-        ll maxm;
+        ll minm = LONG_LONG_MAX;
+
+        unordered_map<ll, ll> index;
 
         if(a[0]<b[0])
-        break;
+        minm =0;
         else if(a[0] > b[0])
         {
-            cnt = ump1[b[0]-1];
-            flag = 0;
-            break;
+            ll j =1;
+            for(int i=0;i<n;i++)
+            {
+                while(j<b[i])
+                {
+                    index[j] = i;
+                    j+=2;
+                }
+            }
+
+            for(int i=0;i<n;i++)
+            {
+                minm = min(minm, i+index[a[i]]);
+            }
         }
 
-        maxm = abs(cnt-flag);
-
-        cnt =0, flag=0;
-        if(a[0]<b[0])
-        break;
-        else if(a[0] > b[0])
-        {
-            cnt = ump2[a[0]+1];
-            flag = 0;
-            break;
-        }
-        
-        maxm = min(abs(cnt-flag), maxm);
-        cout<<maxm<<endl;
+        cout<<minm<<endl;
     }
 }
