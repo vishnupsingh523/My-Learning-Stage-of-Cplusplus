@@ -40,71 +40,28 @@ int main() {
         ll x,y,z;
         cin>>a>>b>>c;
         cin>>x>>y>>z;
-        double ax = (double)x/a;
-        double by = (double)y/b;
-        double cz = (double)z/c;
+        vector<pair<double,ll>> values;
+
+        values.push_back({(double)x/a,a});
+        values.push_back({(double)y/b,b});
+        values.push_back({(double)z/c,c});
         
+        sort(values.begin(), values.end());
         int time = 240;
         ll points = 0;
-        if(ax>by&&ax>=cz)
+        
+        auto itr = values.begin();
+        for(;itr!=values.end();itr++)
+        if(itr->second*20<=time)
         {
-            if(a*20<=240)
-            {
-                points = x*20;
-                time = time-a*20;
-            }
-
-            if(by>cz)
-            {
-                if(b*20<=time)
-                {
-                    points += y*20;
-                    time = time - b*20;
-
-                    if(c*20<=time)
-                    {
-                        points += z*20;
-                        time = time - c*20;
-                    }
-                    else
-                    {
-                        points += (time/c)*z;
-                        time =0;
-                    }
-                }
-                else
-                {
-                    points += (time/b)*y;
-                    time =0;
-                }
-            }
-            else{
-                if(c*20<=time)
-                {
-                    points += z*20;
-                    time = time - c*20;
-                    
-                    if(b*20<=time)
-                    {
-                        points += y*20;
-                        time = time - b*20;
-                    
-                    }
-                    else
-                    {
-                        points += (time/b)*y;
-                        time =0;
-                    }
-                }
-                else
-                {
-                    points += (time/c)*z;
-                    time =0;
-                }
-            }
+            points+= (itr->first*itr->second*20);
+            time = time-(itr->second*20);
         }
-        else if(ax > by &&cz>ax)
-        {}
+        else{
+            points+=(time/itr->second)*(itr->first*itr->second);
+            time = 0;
+        }
 
+        cout<<points<<endl;
     }
 }

@@ -38,15 +38,13 @@ int main() {
     {
         int n;
         cin>>n;
-        ll p = pow(10,n-1);
-        ll power = pow(10,n);
-        p = p/3 +1;
-        p = p*3;
-        for(;p<power;p+=3)
-        {
-            if(p%3 ==0 && p%9!=0&& p%2==1)
-            break;
-        }
-        cout<<p<<endl;
+        for(int i=0;i<n;i++)
+        if(i==0||i==n-1)
+        cout<<3;
+        else
+        cout<<0;
+        cout<<endl;        
     }
+
+    return 0;
 }
